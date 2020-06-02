@@ -1,0 +1,16 @@
+apiVersion: v1
+entries:
+  front:
+  - apiVersion: v1
+    appVersion: "1.0"
+    created: "2020-06-02T14:49:00.788160771+01:00"
+    description: A Helm chart for Kubernetes
+    digest: e60fd377e6ac0057c02ff6e564b040a19f51fd922e960f45bf77f7078e4e0d2e
+    maintainers:
+    - email: geekette86@gmail.com
+      name: manal
+    name: front
+    urls:
+    - https://manelOyez.github.io/vestalyzeHelm/front-0.1.0.tgz
+    version: 0.1.0
+generated: "2020-06-02T14:49:00.787558739+01:00"

@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ConfigMap 
+metadata:
+  name: {{ template "front.fullname" . }}-nginx-config
+  labels:
+    app: {{ template "front.name" . }}
+    chart: {{ template "front.chart" . }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+data:
+  nginx.conf: |-
+{{ .Files.Get .Values.nginx.config.file  | indent 4 }}

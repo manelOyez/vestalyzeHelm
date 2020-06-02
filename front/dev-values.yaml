@@ -1,0 +1,33 @@
+---
+replicaCount: 2
+
+ingress:
+  path: /
+  annotations:
+    kubernetes.io/ingress.class: nginx
+  hosts:
+    - dev.vestalyze.com
+
+resources:
+  limits:
+    cpu: 100m
+    memory: 256Mi
+  requests:
+    cpu: 100m
+    memory: 100Mi
+
+# Horizontal Pod Autoscaler
+autoscaling:
+  enabled: 0
+  minReplicas: 1
+  maxReplicas: 2
+  cpu:
+    enabled: 1
+    targetPercentage: 60
+  memory:
+    enabled: 1
+    targetPercentage: 80
+
+nginx:
+  config:
+    file: nginx.dev.conf

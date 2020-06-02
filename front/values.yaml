@@ -1,0 +1,60 @@
+---
+fullnameOverride: front
+
+replicaCount: 1
+
+envs:
+  - name: APPLICATION_NAME 
+    value: "vestalyze-front"
+
+
+
+port: 3000
+
+service:
+  type: ClusterIP
+  port: 80
+
+liveness:
+  enabled: 0
+  path: "/"
+readiness:
+  enabled: 0
+  path: "/"
+
+nginx:
+  image:
+    tag: 1.15-alpine
+  config:
+    file: nginx.conf
+  resources:
+    limits:
+      cpu: 100m
+      memory: 128Mi
+    requests:
+      cpu: 50m
+      memory: 64Mi
+
+ingress:
+  enabled: true 
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    #kubernetes.io/tls-acme: "true"
+
+# Horizontal Pod Autoscaler
+autoscaling:
+  enabled: 0
+  minReplicas: 1
+  maxReplicas: 1
+  cpu:
+    enabled: 0
+    targetPercentage: 60
+  memory:
+    enabled: 0
+    targetPercentage: 60
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
